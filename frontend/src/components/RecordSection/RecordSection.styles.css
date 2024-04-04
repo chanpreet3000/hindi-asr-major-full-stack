@@ -162,3 +162,11 @@
 .NEGATIVE {
   background-color: #ffb6c1;
 }
+
+.danger {
+  background-color: #ffb6c1;
+}
+
+.no-danger {
+  background-color: #90ee90;
+}

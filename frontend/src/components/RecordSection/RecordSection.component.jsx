@@ -87,7 +87,19 @@ const RecordSection = () => {
         <div className="result-items">
           <div className="result-item">
             <div className="result-item_title">Transcription</div>
-            <div className="result-item_description">{data.data}</div>
+            <div className="result-item_description">{data.text}</div>
+          </div>
+          <div
+            className={
+              `result-item ` + (data.is_danger ? 'danger' : 'no-danger')
+            }
+          >
+            <div className="result-item_title">Threat Detected?</div>
+            <div className="result-item_description">
+              {data.is_danger
+                ? 'Threat is detected, sending an email to the authorities!'
+                : 'No threat detected!'}
+            </div>
           </div>
         </div>
       )}

@@ -10,6 +10,10 @@
 ```
 API_URL = ## hugging face model link here
 TOKEN = ## hugging face authorization token here
+OPENAI_API_KEY = ## OPEN AI KEY
+MAIL_SERVER = ## smtp.gmail.com
+MAIL_USERNAME = ## gmail mail
+MAIL_PASSWORD = ## gmail password
 ```
 2. Open a terminal and run the follwing command
 ```

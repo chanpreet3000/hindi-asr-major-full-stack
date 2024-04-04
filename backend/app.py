@@ -7,11 +7,22 @@ from flask_cors import CORS
 import io
 import time
 from dotenv import load_dotenv
+from model import get_is_in_danger
+from flask_mail import Mail, Message
+
 
 load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
+
+app.config["MAIL_SERVER"] = str(os.environ.get("MAIL_SERVER"))
+app.config["MAIL_PORT"] = 587
+app.config["MAIL_USE_TLS"] = True
+app.config["MAIL_USE_SSL"] = False
+app.config["MAIL_USERNAME"] = str(os.environ.get("MAIL_USERNAME"))
+app.config["MAIL_PASSWORD"] = str(os.environ.get("MAIL_PASSWORD"))
+mail = Mail(app)
 
 API_URL = os.environ.get("API_URL")
 headers = {"Authorization": "Bearer " + str(os.environ.get("TOKEN"))}
@@ -82,15 +93,36 @@ def output(filename):
     with open(filename, "rb") as f:
         data = f.read()
     response = requests.post(API_URL, headers=headers, data=data)
-    text = response.json()
-    return (
-        jsonify(
-            {
-                "data": text["text"],
-            }
-        ),
-        200,
+    text = response.json()["text"]
+    is_danger = get_is_in_danger(text)
+    email_sent = False
+    if is_danger:
+        email_sent = send_email(text)
+    obj = {"text": text, "is_danger": is_danger, "email_sent": email_sent}
+
+    return jsonify(obj), 200
+
+
+def send_email(text):
+    recipient = "chanpreet3000@gmail.com"
+    subject = "Emergency: Someone Needs Help!"
+    body = (
+        "Dear Friend,\n\n"
+        "We've received a distressing message indicating that someone may be in danger. Here's what was communicated:\n\n"
+        f"{text}\n\n"
+        "Based on this message, we believe immediate action may be necessary to ensure their safety.\n\n"
+        "Please take appropriate steps to reach out and provide assistance if possible.\n\n"
+        "Best regards,\n"
+        "Hindi-ASR Major Project Team"
     )
+    msg = Message(subject, sender=app.config["MAIL_USERNAME"], recipients=[recipient])
+    msg.body = body
+    try:
+        mail.send(msg)
+        return True
+    except Exception as e:
+        print("Send Failure", e)
+        return False
 
 
 if __name__ == "__main__":
