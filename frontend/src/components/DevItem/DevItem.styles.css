@@ -1,0 +1,95 @@
+.dev-item-container {
+  transition: all 300ms ease-in-out;
+  margin-top: 4rem;
+  border-radius: 1rem;
+  width: 300px;
+  min-width: 300px;
+  background: linear-gradient(180deg, rgb(8, 8, 8) 0%, rgb(15, 15, 15) 100%);
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0px 0px 10px 10px #7d51eb0f;
+}
+
+.dev-item-container:hover {
+  transform: scale(1.05);
+}
+
+.dev-item-image {
+  width: 100%;
+  aspect-ratio: 1.2;
+  background: url('../../images/aryan.jpg');
+  background-position: 50% 0%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.dev-item-content {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.dev-item-name {
+  margin: 0;
+  padding: 0;
+}
+
+.dev-item-name > h1 {
+  margin: 0;
+  padding: 0;
+  color: var(--white);
+}
+
+.dev-item-name > p {
+  margin: 4px 0px;
+  padding: 0;
+  color: #969696;
+}
+
+.dev-item-data {
+  margin-top: 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.dev-item-data-row {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+}
+
+.dev-item-data-row-item {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.dev-item-data-row-item-title {
+  margin: 0px;
+  padding: 0;
+  font-size: 0.7rem;
+  font-weight: normal;
+  color: rgb(163, 163, 163);
+}
+
+.dev-item-data-row-item-description {
+  font-size: 0.8rem;
+  margin: 4px 0px;
+  padding: 0;
+  font-weight: bold;
+  color: var(--white);
+}
+
+.dev-item-container:nth-child(1) .dev-item-image {
+  background-image: url('../../images/chanpreet.jpg');
+}
+
+.dev-item-container:nth-child(2) .dev-item-image {
+  background-image: url('../../images/aryan.jpg');
+}
+
+.dev-item-container:nth-child(3) .dev-item-image {
+  background-image: url('../../images/himanshu.jpg');
+}
