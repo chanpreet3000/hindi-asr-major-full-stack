@@ -14,10 +14,14 @@ TOKEN = ## hugging face authorization token here
 2. Open a terminal and run the follwing command
 ```
 cd ./frontend
+npm install
 npm run start
 ```
 3. Open another terminal and run the follwing command
 ```
 cd ./backend
+python -m venv .venv
+./.venv/scripts/activate
+pip install -r ./requirements.txt
 python app.py
 ```
