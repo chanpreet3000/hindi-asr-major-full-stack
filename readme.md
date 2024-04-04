@@ -16,7 +16,9 @@ TOKEN = ## hugging face authorization token here
 cd ./frontend
 npm install --legacy-peer-deps
 npm run start
+
 ```
+
 3. Open another terminal and run the follwing command
 ```
 cd ./backend
@@ -24,4 +26,5 @@ python -m venv .venv
 ./.venv/scripts/activate
 pip install -r ./requirements.txt
 python app.py
+
 ```
