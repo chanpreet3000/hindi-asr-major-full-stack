@@ -14,7 +14,7 @@ TOKEN = ## hugging face authorization token here
 2. Open a terminal and run the follwing command
 ```
 cd ./frontend
-npm install
+npm install --legacy-peer-deps
 npm run start
 ```
 3. Open another terminal and run the follwing command
