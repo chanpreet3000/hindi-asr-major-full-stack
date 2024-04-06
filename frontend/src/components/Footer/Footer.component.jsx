@@ -30,7 +30,7 @@ const Footer = () => {
   ];
   return (
     <section className="main-footer" id="main-footer">
-      <h1>Majot Project Team Members</h1>
+      <h1>Major Project Team Members</h1>
       <div className="main-footer__items">
         {developers_list.map((item, key) => {
           return <DevItem dev_info={item} key={key} />;
